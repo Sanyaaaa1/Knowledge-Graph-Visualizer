@@ -123,7 +123,7 @@ class KnowledgeGraphScraper:
         print(f"\nScraping complete! Saved to {self.output_file}")
 
 if __name__ == "__main__":
-    SEED = "https://en.wikipedia.org/wiki/Big_Bang"
+    SEED = "https://en.wikipedia.org/wiki/The_Big_Bang_Theory" # Any Wikipedia article can be used as a seed
     
-    scraper = KnowledgeGraphScraper(seed_url=SEED, max_nodes=800)
+    scraper = KnowledgeGraphScraper(seed_url=SEED, max_nodes=10) # Adjust max_nodes as needed for the needed amount of connections
     scraper.run()
