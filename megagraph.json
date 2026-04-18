@@ -1,0 +1,90 @@
+{
+    "nodes": [
+        {
+            "id": "N1",
+            "label": "The Big Bang Theory"
+        },
+        {
+            "id": "N2",
+            "label": "Big Bang"
+        },
+        {
+            "id": "N3",
+            "label": "Big Bang Theory"
+        },
+        {
+            "id": "N4",
+            "label": "The Big Brain Theory"
+        },
+        {
+            "id": "N5",
+            "label": "Sitcom"
+        },
+        {
+            "id": "N6",
+            "label": "Chuck Lorre"
+        },
+        {
+            "id": "N7",
+            "label": "Bill Prady"
+        },
+        {
+            "id": "N8",
+            "label": "Steven Molaro"
+        },
+        {
+            "id": "N9",
+            "label": "Steve Holland (writer)"
+        },
+        {
+            "id": "N10",
+            "label": "Mark Cendrowski"
+        }
+    ],
+    "edges_by_node": {
+        "N1": [
+            "N2",
+            "N9",
+            "N3",
+            "N7",
+            "N5",
+            "N6",
+            "N4",
+            "N8",
+            "N10"
+        ],
+        "N2": [
+            "N3",
+            "N1"
+        ],
+        "N3": [
+            "N2",
+            "N1"
+        ],
+        "N4": [
+            "N1"
+        ],
+        "N5": [
+            "N1"
+        ],
+        "N6": [
+            "N7",
+            "N1"
+        ],
+        "N7": [
+            "N1"
+        ],
+        "N8": [
+            "N9",
+            "N1",
+            "N7",
+            "N6"
+        ],
+        "N9": [
+            "N1"
+        ],
+        "N10": [
+            "N1"
+        ]
+    }
+}
