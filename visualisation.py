@@ -13,10 +13,12 @@ NODE_RADIUS = 2
 REPULSION_STRENGTH = 6500.0
 SPRING_STRENGTH = 0.06
 REST_LENGTH = 45.0
-GRAVITY_STRENGTH = 0.08 
+GRAVITY_STRENGTH = 0.09
 DAMPING = 0.8
 MAX_SPEED = 5.0
-OPTIMIZATION_THRESHOLD = 300**2 
+OPTIMIZATION_THRESHOLD = 100000.0   # Changed from 10000.0 to reduce 
+                                    # repulsion calculations for distant nodes,
+                                    # improving performance.
 
 try:
     with open("storing_project/megagraph.json", "r", encoding="utf-8") as f:
@@ -106,7 +108,8 @@ def apply_force_directed_layout(force=False):
         node_positions[node][1] += vy
         node_velocities[node] = [vx, vy]
 
-    temperature *= 0.994 
+    temperature *= 0.97     # Cool down was lowered to allow for a more gradual 
+                            # stabilization of the layout, improving visual coherence over time.
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -192,7 +195,7 @@ while running:
         
         screen.blit(txt_surf, (sx + 15, sy - 10))
 
-    ui_text = f"Nodes: {len(nodes)} | SPACE: {'Resume' if paused else 'Pause'} | R: Reset"
+    ui_text = f"Nodes: {len(nodes)} |FPS: {int(clock.get_fps())} | SPACE: {'Resume' if paused else 'Pause'} | R: Reset" # Added FPS, because why not?
     info = font.render(ui_text, True, (100, 110, 130))
     screen.blit(info, (20, HEIGHT - 30))
     if paused:

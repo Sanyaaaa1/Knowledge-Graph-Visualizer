@@ -2,9 +2,10 @@ import json
 import time
 from urllib.parse import urljoin, urlparse
 from playwright.sync_api import sync_playwright
+import re 
 
 class KnowledgeGraphScraper:
-    def __init__(self, seed_url, max_nodes=30, output_file="storing_project/megagraph.json"):
+    def __init__(self, seed_url, max_nodes=30, output_file="storing_project/megagraph1.json"):
         self.seed_url = seed_url
         self.max_nodes = max_nodes
         self.output_file = output_file
@@ -49,11 +50,16 @@ class KnowledgeGraphScraper:
             '/wiki/Talk:',
             '/wiki/File:',
             '/wiki/Category:',
-            '/wiki/Main_Page'
+            '/wiki/Main_Page',
+            '/wiki/List_of',  # IDK if this is necessary or even works, but it may help
+
         ]
         if any(path.startswith(prefix) for prefix in forbidden_prefixes):
             return False
-            
+        
+        if re.match(r'/wiki/\d{4}', path):  # Exclude year-based pages like /wiki/1990 or /wiki/2001
+            return False
+        
         return True
 
     def run(self):
@@ -125,5 +131,5 @@ class KnowledgeGraphScraper:
 if __name__ == "__main__":
     SEED = "https://en.wikipedia.org/wiki/The_Big_Bang_Theory" # Any Wikipedia article can be used as a seed
     
-    scraper = KnowledgeGraphScraper(seed_url=SEED, max_nodes=10) # Adjust max_nodes as needed for the needed amount of connections
+    scraper = KnowledgeGraphScraper(seed_url=SEED, max_nodes=100) # Adjust max_nodes as needed for the needed amount of connections
     scraper.run()
