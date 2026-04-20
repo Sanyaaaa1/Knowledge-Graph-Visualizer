@@ -10,7 +10,7 @@ It consists of two main parts:
 
 ## Demo
 
-[![Demo](https://raw.githubusercontent.com/Sanyaaaa1/wiki-visualiser/main/videos/pic.png)](https://raw.githubusercontent.com/Sanyaaaa1/wiki-visualiser/main/videos/vid1.mp4)
+![Demo](https://raw.githubusercontent.com/Sanyaaaa1/Knowledge-Graph-Visualizer/main/video/video.GIF)
 
 
 ## Features
